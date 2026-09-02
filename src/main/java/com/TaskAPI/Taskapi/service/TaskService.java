@@ -1,5 +1,6 @@
 package com.TaskAPI.Taskapi.service;
 
+import com.TaskAPI.Taskapi.exception.TaskNotFoundException;
 import com.TaskAPI.Taskapi.model.Task;
 import com.TaskAPI.Taskapi.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class TaskService {
 
     public Task getTaskById(Long id) {
         return taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task not found with id " + id));
+                .orElseThrow(() -> new TaskNotFoundException("Task not found with id " + id));
     }
 
     public Task createTask(Task task) {
