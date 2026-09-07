@@ -1,6 +1,8 @@
 package com.TaskAPI.Taskapi.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tasks")
@@ -9,11 +11,14 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title is required")
     private String title;
 
     private String description;
+
+    @NotNull(message = "Status is required")
     @Enumerated(EnumType.STRING)
-    private TaskStatus status;
+    private TaskStatus status;;
 
     public Long getId() {
         return id;
