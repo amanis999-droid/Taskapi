@@ -3,6 +3,7 @@ package com.TaskAPI.Taskapi.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tasks")
@@ -19,7 +20,7 @@ public class Task {
     @NotNull(message = "Status is required")
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
